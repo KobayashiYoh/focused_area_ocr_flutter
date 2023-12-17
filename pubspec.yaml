@@ -1,5 +1,5 @@
 name: focused_area_ocr_flutter
-description: A new Flutter package project.
+description: This is a package to get text in the focused area on the camera. It is created based on OCR technology by https://pub.dev/packages/google_mlkit_text_recognition.
 version: 0.0.1
 repository: https://github.com/KobayashiYoh/focused_area_ocr_flutter
 
