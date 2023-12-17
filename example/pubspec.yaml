@@ -49,6 +49,7 @@ dev_dependencies:
   focused_area_ocr_flutter:
     git:
       url: https://github.com/KobayashiYoh/focused_area_ocr_flutter.git
+      ref: develop
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

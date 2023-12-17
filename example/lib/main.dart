@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+// TODO: Delete ignore_for_file.
+// ignore_for_file: depend_on_referenced_packages
 import 'package:focused_area_ocr_flutter/focused_area_ocr_flutter.dart';
 
 void main() {
