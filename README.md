@@ -142,5 +142,5 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 ## Additional information
-Thanks for loving this package.
+Thanks for loving this package.<br>
 I welcome your contribution to this package.
