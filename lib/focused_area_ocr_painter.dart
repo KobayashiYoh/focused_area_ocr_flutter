@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:focused_area_ocr_flutter/coordinate_util.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 
+/// A custom painter for rendering the focused area and recognized text on a canvas.
 class FocusedAreaOCRPainter extends CustomPainter {
   FocusedAreaOCRPainter({
     required this.recognizedText,
