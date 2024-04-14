@@ -1,5 +1,5 @@
-import 'dart:ui';
 import 'dart:ui' as ui;
+import 'dart:ui';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -23,20 +23,46 @@ class FocusedAreaOCRPainter extends CustomPainter {
     this.onScanText,
   });
 
+  /// The recognized text data.
   final RecognizedText recognizedText;
+
+  /// The size of the image.
   final Size imageSize;
+
+  /// The rotation of the image.
   final InputImageRotation rotation;
+
+  /// The direction of the camera lens.
   final CameraLensDirection cameraLensDirection;
+
+  /// The width of the focused area.
   final double focusedAreaWidth;
+
+  /// The height of the focused area.
   final double focusedAreaHeight;
+
+  /// The center position of the focused area.
   final Offset focusedAreaCenter;
+
+  /// The radius of the focused area's corners.
   final Radius focusedAreaRadius;
+
+  /// The paint to use for drawing the focused area.
   final Paint? focusedAreaPaint;
+
+  /// The paint to use for drawing the unfocused area.
   final Paint? unfocusedAreaPaint;
+
+  /// The paint to use for drawing the background of recognized text.
   final Paint? textBackgroundPaint;
+
+  /// The text style to use for recognized text, using `dart:ui`'s `TextStyle` instead of `material.dart`'s `TextStyle`.
   final ui.TextStyle? uiTextStyle;
+
+  /// Callback function called when text is scanned.
   final Function? onScanText;
 
+  /// Draws the focused area on the canvas.
   void _drawFocusedArea(Canvas canvas, RRect focusedRRect) {
     final Paint defaultPaint = Paint()
       ..style = PaintingStyle.stroke
@@ -48,6 +74,7 @@ class FocusedAreaOCRPainter extends CustomPainter {
     );
   }
 
+  /// Draws the unfocused area on the canvas.
   void _drawUnfocusedArea(Canvas canvas, Size size, RRect focusedRRect) {
     final Offset deviceCenter = Offset(size.width / 2, size.height / 2);
     final Rect deviceRect = Rect.fromCenter(
@@ -66,6 +93,7 @@ class FocusedAreaOCRPainter extends CustomPainter {
     );
   }
 
+  /// Draws the recognized text and its background on the canvas.
   void _drawText(Canvas canvas, TextBlock textBlock, Rect textRect) {
     final ui.TextStyle defaultStyle = ui.TextStyle(
       color: Colors.lightGreenAccent,
@@ -86,6 +114,7 @@ class FocusedAreaOCRPainter extends CustomPainter {
     );
   }
 
+  /// Draws the background for the recognized text on the canvas.
   void _drawTextBackground(Canvas canvas, TextBlock textBlock, Size size) {
     final List<Offset> cornerPoints = <Offset>[];
     for (final point in textBlock.cornerPoints) {
