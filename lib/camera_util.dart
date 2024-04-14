@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 
+/// Utility class for handling camera-related operations.
 class CameraUtil {
   /// Utility class for handling camera-related operations.
   static final _orientations = {
