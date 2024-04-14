@@ -8,6 +8,7 @@ import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart
 
 import 'camera_util.dart';
 
+/// A widget for capturing live camera feed and performing OCR on a focused area of the camera view.
 class FocusedAreaOCRView extends StatefulWidget {
   const FocusedAreaOCRView({
     Key? key,
@@ -27,19 +28,46 @@ class FocusedAreaOCRView extends StatefulWidget {
     this.onCameraLensDirectionChanged,
   }) : super(key: key);
 
+  /// The width of the focused area.
   final double? focusedAreaWidth;
+
+  /// The height of the focused area.
   final double? focusedAreaHeight;
+
+  /// The center position of the focused area.
   final Offset? focusedAreaCenter;
+
+  /// The radius of the focused area's corners.
   final Radius? focusedAreaRadius;
+
+  /// The paint to use for drawing the focused area.
   final Paint? focusedAreaPaint;
+
+  /// The paint to use for drawing the unfocused area.
   final Paint? unfocusedAreaPaint;
+
+  /// The paint to use for drawing the background of recognized text.
   final Paint? textBackgroundPaint;
+
+  /// The text style to use for recognized text, using `dart:ui`'s `TextStyle` instead of `material.dart`'s `TextStyle`.
   final ui.TextStyle? paintTextStyle;
+
+  /// Callback function called when text is scanned.
   final Function? onScanText;
+
+  /// The script used for text recognition.
   final TextRecognitionScript script;
+
+  /// Whether to show the script dropdown (for selecting recognition script).
   final bool showDropdown;
+
+  /// Callback function called when the camera feed is ready.
   final VoidCallback? onCameraFeedReady;
+
+  /// Callback function called when the detector view mode changes.
   final VoidCallback? onDetectorViewModeChanged;
+
+  /// Callback function called when the camera lens direction changes.
   final Function(CameraLensDirection direction)? onCameraLensDirectionChanged;
 
   @override
@@ -57,6 +85,7 @@ class _FocusedAreaOCRViewState extends State<FocusedAreaOCRView> {
   CameraController? _controller;
   int _cameraIndex = -1;
 
+  /// Processes the input image for text recognition.
   Future<void> _processImage(InputImage inputImage) async {
     if (!_canProcess || _isLoading) {
       return;
@@ -91,6 +120,7 @@ class _FocusedAreaOCRViewState extends State<FocusedAreaOCRView> {
     }
   }
 
+  /// Starts the live camera feed.
   Future<void> _startLiveFeed() async {
     final camera = _cameras[_cameraIndex];
     final imageFormatGroup =
@@ -117,12 +147,16 @@ class _FocusedAreaOCRViewState extends State<FocusedAreaOCRView> {
     });
   }
 
+  /// Stops the live camera feed.
   Future<void> _stopLiveFeed() async {
     await _controller?.stopImageStream();
     await _controller?.dispose();
     _controller = null;
   }
 
+  /// Processes the camera image received from the live feed.
+  ///
+  /// [image] The camera image to process.
   void _processCameraImage(CameraImage image) {
     final inputImage = CameraUtil.inputImageFromCameraImage(
       image: image,
@@ -136,6 +170,7 @@ class _FocusedAreaOCRViewState extends State<FocusedAreaOCRView> {
     _processImage(inputImage);
   }
 
+  /// Initializes the camera by setting up available cameras and starting the live feed.
   Future<void> _initialize() async {
     if (_cameras.isEmpty) {
       _cameras = await availableCameras();
