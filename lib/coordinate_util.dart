@@ -4,7 +4,16 @@ import 'dart:ui';
 import 'package:camera/camera.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 
+/// Utility class for handling coordinate translations and checks.
 class CoordinateUtil {
+  /// Translates the X coordinate based on canvas and image size, rotation, and camera lens direction.
+  ///
+  /// [x] The X coordinate to be translated.
+  /// [canvasSize] The size of the canvas where the image is displayed.
+  /// [imageSize] The size of the original image.
+  /// [rotation] The rotation of the input image.
+  /// [cameraLensDirection] The direction of the camera lens (front or back).
+  /// Returns the translated X coordinate.
   static double translateX({
     required double x,
     required Size canvasSize,
@@ -27,6 +36,14 @@ class CoordinateUtil {
     }
   }
 
+  /// Translates the Y coordinate based on canvas and image size, rotation, and camera lens direction.
+  ///
+  /// [y] The Y coordinate to be translated.
+  /// [canvasSize] The size of the canvas where the image is displayed.
+  /// [imageSize] The size of the original image.
+  /// [rotation] The rotation of the input image.
+  /// [cameraLensDirection] The direction of the camera lens (front or back).
+  /// Returns the translated Y coordinate.
   static double translateY({
     required double y,
     required Size canvasSize,
@@ -45,6 +62,11 @@ class CoordinateUtil {
     }
   }
 
+  /// Checks if a point represented by a rectangle is within the range of another rounded rectangle.
+  ///
+  /// [focusedRRect] The rounded rectangle representing the focus area.
+  /// [textRect] The rectangle representing the text area..
+  /// Returns true if the point represented by [textRect] is within [focusedRRect], otherwise false.
   static bool hasPointInRange(RRect focusedRRect, Rect textRect) {
     final double minX = focusedRRect.left;
     final double maxX = focusedRRect.right;

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 
 class CameraUtil {
+  /// Utility class for handling camera-related operations.
   static final _orientations = {
     DeviceOrientation.portraitUp: 0,
     DeviceOrientation.landscapeLeft: 90,
@@ -12,6 +13,13 @@ class CameraUtil {
     DeviceOrientation.landscapeRight: 270,
   };
 
+  /// Generates an input image from a camera image.
+  ///
+  /// [image] is the image data from the camera.
+  /// [controller] is the camera controller.
+  /// [cameras] is the list of available cameras.
+  /// [cameraIndex] is the index of the camera to use.
+  /// Returns an [InputImage] object if successful, otherwise returns null.
   static InputImage? inputImageFromCameraImage({
     required CameraImage image,
     required CameraController? controller,
