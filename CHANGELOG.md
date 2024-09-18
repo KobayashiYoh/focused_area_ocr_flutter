@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Upgrade dependencies.
+
 ## 0.0.3
 
 * Add documentation to CameraUtil and FocusedAreaOCRPainter classes.

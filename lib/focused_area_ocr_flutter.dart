@@ -11,7 +11,7 @@ import 'camera_util.dart';
 /// A widget for capturing live camera feed and performing OCR on a focused area of the camera view.
 class FocusedAreaOCRView extends StatefulWidget {
   const FocusedAreaOCRView({
-    Key? key,
+    super.key,
     this.focusedAreaWidth = 200.0,
     this.focusedAreaHeight = 40.0,
     this.focusedAreaCenter = Offset.zero,
@@ -26,7 +26,7 @@ class FocusedAreaOCRView extends StatefulWidget {
     this.onCameraFeedReady,
     this.onDetectorViewModeChanged,
     this.onCameraLensDirectionChanged,
-  }) : super(key: key);
+  });
 
   /// The width of the focused area.
   final double? focusedAreaWidth;
