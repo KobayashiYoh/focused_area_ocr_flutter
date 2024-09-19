@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Upgrade camera version.
+
 ## 0.0.4
 
 * Upgrade dependencies.
